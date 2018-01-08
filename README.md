@@ -2,6 +2,7 @@
 
 ![](image.jpg)
 
+For more information visit https://etherarp.net/building-a-sms-gateway-from-a-huawei-usb-modem/
 
 # 1. What is this?
 An SMS-Gateway is a server that provides an API for sending and/or receiving SMS (Small Message Service) messages, commonly known as "texts". A SIM card and some form of mobile network hardware is required; for this tutorial, we use a Hauwei E303 as the hardware.
