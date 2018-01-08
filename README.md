@@ -69,7 +69,7 @@ Automatic redirect
 
     <meta http-equiv="Refresh" content="seconds; url=/html/index.html">      
 
-# 5. Getting SMS
+# 6a. Getting SMS
 
     curl --header "X-Requested-With XMLHttpRequest" --data "<request>
              <PageIndex>1</PageIndex>
@@ -80,7 +80,7 @@ Automatic redirect
              <UnreadPreferred>1</UnreadPreferred>
     </request>" hi.link/sms/sms-list --silent
 
-# 6. Sending SMS
+# 6b. Sending SMS
 
     curl --data "<request>
              <Index>-1</Index>
@@ -94,7 +94,7 @@ Automatic redirect
              <Date>$(date +"%Y-%m-%d %T")</Date>
     </request>" hi.link/api/sms/send-sms
 
-# 7. Checking notifications
+# 6c. Checking notifications
 
     curl hi.link/api/monitoring/check-notifications
     <?xml version="1.0" encoding="UTF-8"?>
@@ -105,7 +105,7 @@ Automatic redirect
     </response>
 
 
-# 8. Protect the interface against other users
+# 7. Protect the interface against other users
 When connected, the device is accessible to all users without authentication.
 We want to make sure that only the `nginx` user is able to access the device. Remember, users authenticate through the nginx reverse proxy.
 
