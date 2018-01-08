@@ -1,0 +1,21 @@
+#
+# /etc/network/interfaces configuration for my RaspberryPi
+# Change eth0's values to suit your own
+# The only relevant option is the "post-up" that runs usb modeswitch
+#
+
+auto eth0
+iface eth0 inet static
+	address 10.0.0.2
+	netmask 255.255.255.0
+  gateway 10.0.0.1
+	dns-nameserver 127.0.0.1
+	post-up usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000011062000000101000100000000000000'
+
+#
+# Now we have the huawei card
+#
+allow-hotplug eth1
+iface eth1 inet static
+  address 192.168.1.2
+  netmask 255.255.255.252
