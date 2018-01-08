@@ -62,8 +62,9 @@ SSL recommended!**
 
     }
 
-**automatic redirect to /htm/home.html;
-put this in /var/www/html/hi.link/index.html**
+**/var/www/html/hi.link/index.html  
+Automatic redirect
+**
 
     <meta http-equiv="Refresh" content="seconds; url=/html/index.html">      
 
