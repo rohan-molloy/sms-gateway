@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../css/main.css" type="text/css" />
+        <script type="text/javascript" src="../lib/jquery-1.4.4.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/checklogin.js"></script>
+		<script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/mobileconnection.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div class="wrapper_dim wrapper_filter">
+                <div id="header" class="header">
+                </div>
+                <div class="content">
+                    <div class="main_left">
+                        <div id="settings_menu">
+                        </div>
+                    </div>
+                    <div class="content_right">
+                        <div class="maintitle">
+                            <h1>
+                            <script type="text/javascript">dw(dialup_label_mobile_connection);</script>
+                            </h1>
+                        </div>
+                        <div class="main_content">
+                            <h2>
+                            <script type="text/javascript">
+                                dw(dialup_label_mobile_connection);
+                                dw(common_colon);
+                            </script>
+                            </h2>
+                            <table width="600" border="0" cellspacing="0" cellpadding="0" class="connection_content_list">
+                                <tr valign="top">
+                                    <td valign="middle" height="28" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_connection_mode);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <span>
+                                        <select class="input_select" id="select_connection_mode" value="">
+                                        </select>
+                                    </span>
+                                    </td>
+                                </tr>
+                                <tr id="roam_open" style="display:none">
+                                    <td height="26" width="220"></td>
+                                    <td>
+                                    <div class="auto_connect_roam">
+                                        <input name="enable_roam_startup" type="checkbox" value="" />
+                                        <span>
+                                            <script type="text/javascript">dw(hilink_label_autoconnection_content);</script>
+                                        </span>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr valign="middle" id="ondemand_connect" style="display:none">
+                                    <td valign="middle" class="padding_title" height="44" width="220">
+                                    <script type="text/javascript">
+                                        dw(dialup_label_max_idle_time_s);
+                                        dw(common_colon);
+                                    </script>
+                                    </td>
+                                    <td valign="middle">
+                                    <input type="text" disabled="disabled" class="input_style" id="input_max_idle_time" style="width:170px;" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="apply_button">
+                                <script type="text/javascript">create_button(common_apply,"apply");</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" class="footer">
+            </div>
+        </div>
+        <noscript>
+			<div class="noscript_text">
+				Your browser does not support JavaScript.
+			</div>
+		</noscript>
+    </body>
+</html>

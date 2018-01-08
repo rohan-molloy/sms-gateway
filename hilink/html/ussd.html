@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="../css/main.css" />
+        <script type="text/javascript" src="../lib/jquery-1.4.4.js"></script>
+        <script type="text/javascript" src="../lib/log4javascript_lite.js"></script>
+        <script type="text/javascript" src="../lib/jquery.qtip.js"></script>
+        <script type="text/javascript" src="../js/select.js"></script>
+        <script type="text/javascript" src="../js/changelang.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <!--<script type="text/javascript" src="../js/checklogin.js"></script>-->
+        <script type="text/javascript" src="../js/redirect.js"></script>
+        <script type="text/javascript" src="../js/ussd.js"></script>
+        <script type="text/javascript" src="../js/validation.js"></script>
+        <title></title>
+    </head>
+
+    <body>
+        <div id="all_content" class="body_bg">
+            <div id="wrapper" class="wrapper_dim">
+                <div class="wrapper_dim wrapper_filter">
+                    <div id="header">
+                    </div>
+                    <div class="content">
+                        <div class="status_title">
+                            <h2>
+                            <script type="text/javascript">dw(ussd_label_ussd);</script>
+                            </h2>
+                        </div>
+                        <div class="ussd_content">
+                            <!--<div id="fun_activateInternetService">
+                                <h2>
+                                <label class="ussd_fun_title" id="activate_internet_service_title">
+                                </label>
+                                </h2>
+                                <p>
+                                    <label id="activate_internet_service_description">
+                                    </label>
+                                </p>
+                                <div id="activate_internet_service">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                    </table>
+                                </div>
+                            </div>-->
+
+                            <div id="fun_balanceInquiry">
+                                <h2>
+                                <label class="ussd_fun_title" id="balance_inquiry_title">
+                                </label>
+                                </h2>
+                                <p>
+                                    <label id="balance_inquiry_description">
+                                    </label>
+                                </p>
+                                <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                    <tr>
+                                        <td height="40">
+										<div id="balance_inquiry_style">
+											<label id="balance_inquiry_result">
+											</label>
+										</div>
+                                        </td>
+                                        <td  class="align_right" id="balance_inquiry_action"></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div id="fun_charge">
+                                <h2>
+                                <label class="ussd_fun_title" id="charge_title">
+                                </label>
+                                </h2>
+                                <p>
+                                    <label id="charge_description">
+                                    </label>
+                                </p>
+                                <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                    <tr>
+                                        <td>
+                                        <input type="text" id="charge_command" maxlength="40" />
+                                        </td>
+                                        <td height="40" class="align_right" id="charge_action"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                        <input type="hidden" id="charge_hint" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div id="fun_general">
+                                <h2>
+                                <label class="ussd_fun_title" id="general_title">
+                                </label>
+                                </h2>
+                                <div id="general">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="500" >
+                                        <tr>
+                                            <td colspan="2">
+                                            <div class="ussd_general_result" id="general_result">
+                                                <table id="general_result_table" class="general_result_table">
+                                                </table>
+                                            </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="32" colspan="2">
+                                            <label id="general_description">
+                                            </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <span id="general_command_select" class="general_command_select"></span>
+                                            </td>
+                                            <td  class="align_right" id="general_action" width="120"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                            <input type="hidden" id="general_hint" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="noscript_text">
+                Your browser does not support JavaScript.
+            </div>
+        </noscript>
+    </body>
+</html>

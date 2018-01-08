@@ -1,0 +1,23 @@
+server {
+        server_name hi.link sms-gateway.xyz;
+        listen 443;
+        ssl on;
+        ssl_certificate /etc/ssl/sms-gateway.xyz.pem;
+        ssl_certificate_key /etc/ssl/sms-gateway.xyz.key;
+        ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+        root /var/www/html/hi.link;
+        # index.html contains
+        # <meta http-equiv="Refresh" content="seconds; url=/html/index.html">
+        index index.html;
+        error_page 404 = @hilink;
+        location @hilink
+        {
+                proxy_pass http://192.168.1.1;
+                proxy_set_header Host hi.link;
+                proxy_set_header X-Forwarded-For $remote_addr;
+                auth_basic "Restricted Content";
+                auth_basic_user_file /etc/nginx/.htpasswd;
+        }
+
+}
