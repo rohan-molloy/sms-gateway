@@ -10,6 +10,11 @@ For more information visit https://etherarp.net/building-a-sms-gateway-from-a-hu
     cp sms-gateway/bin/Get-SMS.sh /usr/bin/Get-SMS
     cp sms-gateway/bin/sms.json ~/sms.json
 
+# Usage
+
+    $ Send-SMS 1234567 "my message"
+    $ Get-SMS | tee sms.xml
+
 # 1. What is this?
 An SMS-Gateway is a server that provides an API for sending and/or receiving SMS (Small Message Service) messages, commonly known as "texts". A SIM card and some form of mobile network hardware is required; for this tutorial, we use a Hauwei E303 as the hardware.
 
@@ -120,15 +125,23 @@ Please note, this involves setting a default `DROP` policy for the OUTPUT chain
 
 Be careful you don't break things :)
 
-    -P OUTPUT DROP
-    -A OUTPUT -m conntrack --ctstate INVALID -j DROP
-    -A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+    #! /bin/bash
+    iptables --policy OUTPUT ACCEPT
+    iptables --flush OUTPUT
+
+    # These rules MUST be present for working network connectivity
+    iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
+    iptables -A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
     # Allow any outbound connection from root
-    -A OUTPUT -m owner --uid-owner root -j ACCEPT
+    iptables -A OUTPUT -m owner --uid-owner root -j ACCEPT
+
+    # Allow any outbound connections not going to 192.168.1.1
+    iptables -A OUTPUT ! -d 192.168.1.1 -j ACCEPT
 
     # Allow outbound connection to 192.168.1.1 from `www-data`
-    -A OUTPUT -d 192.168.1.1/32 -m owner --uid-owner www-data -j ACCEPT
+    iptables -A OUTPUT -d 192.168.1.1/32 -m owner --uid-owner www-data -j ACCEPT
 
-    # Allow any outbound connection except 192.168.1.1 from user
-    -A OUTPUT ! -d 192.168.1.1/32 -m owner --uid-owner 1000 -j ACCEPT
+    # Set OUTPUT to drop by default
+    # remember we've already allowed anything that isn't going to hi.link
+    iptables --policy OUTPUT DROP
