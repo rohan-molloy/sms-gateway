@@ -1,9 +1,9 @@
 {
 
-        "APIProtocol": "https",
-        "APIHost": "hilink.etherarp.net",
+        "APIProtocol": "http",
+        "APIHost": "hi.link",
         "APILocation":"/api/sms",
-        "AuthenticationType": "basic",
+        "AuthenticationType": "none",
         "AuthenticationCommand": "/usr/bin/pass sms-gateway 2>/dev/null",
         "SMSServicecenter":"0123456789"
 }

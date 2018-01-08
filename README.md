@@ -4,6 +4,12 @@
 
 For more information visit https://etherarp.net/building-a-sms-gateway-from-a-huawei-usb-modem/
 
+# Install
+    git clone https://github.com/rohan-molloy/sms-gateway
+    cp sms-gateway/bin/Send-SMS.sh /usr/bin/Send-SMS
+    cp sms-gateway/bin/Get-SMS.sh /usr/bin/Get-SMS
+    cp sms-gateway/bin/sms.json ~/sms.json
+
 # 1. What is this?
 An SMS-Gateway is a server that provides an API for sending and/or receiving SMS (Small Message Service) messages, commonly known as "texts". A SIM card and some form of mobile network hardware is required; for this tutorial, we use a Hauwei E303 as the hardware.
 
