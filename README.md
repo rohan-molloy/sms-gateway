@@ -111,7 +111,7 @@ We want to make sure that only the `nginx` user is able to access the device. Re
 We can restrict prohibit access to 192.168.1.1 from any user *except* `www-data`.
 Please note, this involves setting a default `DROP` policy for the OUTPUT chain
 
-**Be careful you don't break things :) **
+**Be careful you don't break things :)**
 
     -P OUTPUT DROP
     -A OUTPUT -m conntrack --ctstate INVALID -j DROP
