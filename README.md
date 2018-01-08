@@ -6,8 +6,8 @@ For more information visit https://etherarp.net/building-a-sms-gateway-from-a-hu
 
 # Install
     git clone https://github.com/rohan-molloy/sms-gateway
-    cp sms-gateway/bin/Send-SMS.sh /usr/bin/Send-SMS
-    cp sms-gateway/bin/Get-SMS.sh /usr/bin/Get-SMS
+    sudo cp sms-gateway/bin/Send-SMS.sh /usr/bin/Send-SMS
+    sudo cp sms-gateway/bin/Get-SMS.sh /usr/bin/Get-SMS
     cp sms-gateway/bin/sms.json ~/sms.json
 
 # Usage
@@ -24,7 +24,7 @@ The E303 provides a web front-end which we will reverse proxy via Nginx. It also
 The E303 is a USB modem by Huawei supporting `UMTS/HSUPAGSM/GPRS/EDGE` (2G/3G) and with the following data modes `HSDPA 7.2Mbps/HSUPA 5.76Mbps`.
 
 When running in `cdc_ether` mode, it appears as an ethernet device with the following mac `58:2c:80:13:92:63`.
-Depending on your system, it may either show up as eth1,eth2 etc or have the following `persistent` name `enx582c80139263`
+Depending on your system, it may either show up as eth1,eth2 etc or have the following [persistent name](https://major.io/2015/08/21/understanding-systemds-predictable-network-device-names/) `enx582c80139263`
 
 # 3. Accessing the management interface  
 
@@ -39,7 +39,7 @@ We then need to find the interface name, we can do by grepping the mac address
 
     hilink_dev=$(ip -4 -oneline link | grep 58:2c:80:13:92:63 | awk '{print $2}' | tr -d ':')
 
-Now we can set the address
+Now we can set the address (remember you need root)
 
     ip -4 address add 192.168.1.2/30 dev $hilink_dev
 
@@ -74,9 +74,9 @@ SSL recommended!**
 
     }
 
-**/var/www/html/hi.link/index.html  
-Automatic redirect
-**
+**/var/www/html/hi.link/index.html**  
+**Automatic redirect**
+
 
     <meta http-equiv="Refresh" content="seconds; url=/html/index.html">      
 
