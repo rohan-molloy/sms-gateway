@@ -95,13 +95,13 @@ Automatic redirect
 
 # 7. Checking notifications
 
-  curl hi.link/api/monitoring/check-notifications
-  <?xml version="1.0" encoding="UTF-8"?>
-  <response>
-  <UnreadMessage>0</UnreadMessage>
-  <SmsStorageFull>0</SmsStorageFull>
-  <OnlineUpdateStatus>13</OnlineUpdateStatus>
-  </response>
+    curl hi.link/api/monitoring/check-notifications
+    <?xml version="1.0" encoding="UTF-8"?>
+    <response>
+    <UnreadMessage>0</UnreadMessage>
+    <SmsStorageFull>0</SmsStorageFull>
+    <OnlineUpdateStatus>13</OnlineUpdateStatus>
+    </response>
 
 
 # 8. Protect the interface against other users
