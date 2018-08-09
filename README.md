@@ -126,22 +126,8 @@ Please note, this involves setting a default `DROP` policy for the OUTPUT chain
 Be careful you don't break things :)
 
     #! /bin/bash
-    iptables --policy OUTPUT ACCEPT
-    iptables --flush OUTPUT
+    # Drop connection to 192.168.1.1 not from  `www-data` user
+    iptables -A OUTPUT -d 192.168.1.1/32 -m owner ! --uid-owner www-data -j LOG
+    iptables -A OUTPUT -d 192.168.1.1/32 -m owner ! --uid-owner www-data -j REJECT   
 
-    # These rules MUST be present for working network connectivity
-    iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
-    iptables -A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
-    # Allow any outbound connection from root
-    iptables -A OUTPUT -m owner --uid-owner root -j ACCEPT
-
-    # Allow any outbound connections not going to 192.168.1.1
-    iptables -A OUTPUT ! -d 192.168.1.1 -j ACCEPT
-
-    # Allow outbound connection to 192.168.1.1 from `www-data`
-    iptables -A OUTPUT -d 192.168.1.1/32 -m owner --uid-owner www-data -j ACCEPT
-
-    # Set OUTPUT to drop by default
-    # remember we've already allowed anything that isn't going to hi.link
-    iptables --policy OUTPUT DROP
