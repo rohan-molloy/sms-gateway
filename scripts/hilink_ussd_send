@@ -1,5 +1,8 @@
 #! /bin/bash
 
+[[ ! -f ~/.config/hilink.conf ]] && base64 -d > ~/.config/hilink.conf <<< "CkhJTElOS19QUk9UT0NPTD1odHRwCkhJTElOS19IT1NUPTE5Mi4xNjguMS4xCkhJTElOS19QT1JU
+PTgwCkhJTElOS19VU0VSPXVzZXIKSElMSU5LX1BBU1NXT1JEPXBhc3N3b3JkCg=="
+
 source ~/.config/hilink.conf
 
 SesTokInfo=$(curl \
