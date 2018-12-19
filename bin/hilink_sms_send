@@ -1,0 +1,24 @@
+#! /bin/bash
+source ~/.config/hilink.conf
+
+SesTokInfo=$(curl \
+--url     "$HILINK_PROTO://$HILINK_HOST:$HILINK_PORT/api/webserver/SesTokInfo" \
+--header  "Host:$HILINK_HOST" \
+--user    "$HILINK_USER:$HILINK_PASSWORD" 
+)
+HILINK_COOKIE=$(echo "$SesTokInfo"|grep SessionID=|cut -b 10-147)
+HILINK_TOKEN=$(echo "$SesTokInfo"|grep TokInfo|cut -b 10-41)
+
+CONTENT=$1
+PHONE=$2
+DATE=$(date '+%Y-%m-%d %T')
+LENGTH=${#CONTENT}
+
+curl -fSs $HILINK_PROTO://$HILINK_HOST:$HILINK_PORT/api/sms/send-sms \
+--header "Host:$HILINK_HOST" \
+--header "Cookie:$HILINK_COOKIE" \
+--header "__RequestVerificationToken:$HILINK_TOKEN" \
+--user   "$HILINK_USER:$HILINK_PASSWORD" \
+--data	 "<request><Index>1</Index><Phones><Phone>$PHONE</Phone></Phones><Sca>0220227672</Sca><Content>$CONTENT</Content><Length>$LENGTH</Length><Reserved>1</Reserved><Date>$DATE</Date></request>"
+
+
