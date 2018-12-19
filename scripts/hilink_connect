@@ -1,7 +1,10 @@
 #! /bin/bash
 
 
-
+if [ ! -f ~/.config/hilink.conf ]; then
+	curl -fSsL -o ~/.config/hilink.conf \
+	https://raw.githubusercontent.com/rohan-molloy/sms-gateway/master/scripts/hilink.conf
+fi
 source ~/.config/hilink.conf
 
 SesTokInfo=$(curl \
