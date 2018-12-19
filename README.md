@@ -1,4 +1,4 @@
-# SMS Gateway (Huawei E303)
+# SMS Gateway (Huawei HiLink)
 
 ![](image.jpg)
 
@@ -16,14 +16,13 @@ For more information visit https://etherarp.net/building-a-sms-gateway-from-a-hu
 
 ## What is this?
 An SMS-Gateway is a server that provides an API for sending and/or receiving SMS/Text messages.
-The E303 (and other Hauwei modems) provide a web GUI interface and an XML API for programmatic access.
-
-This contains a set of scripts to manage Hauwei modems, including sending/receiving SMS. It has been tested on the Hauwei E303 and E3372.
+The E303 (and other Hauwei modems) provide a web GUI interface and an XML API for programmatic access. This contains a set of scripts to manage Hauwei modems, including sending/receiving SMS. It has been tested on the Hauwei E303 and E3372.
 
 
 ## IP Addresses 
 
 Hilink E303  - http://192.168.1.1
+
 Hilink E3372 - http://192.168.8.1
 
 ![](/webui.png)
@@ -40,13 +39,25 @@ usb_modeswitch -v 12d1 -p 1f01 -M '555342431234567800000000000000110620000001010
 
 ## What if 192.168.1.0/24 clashes with my LAN
 This workaround is for Linux only.
+```
+# Create a network namespace for the HiLink 
+sudo ip netns add sms
+# Add the hilink to the network namespace and bring it online
+sudo ip link dev enp0s29u1u6
+sudo ip netns exec sms ifconfig enp0s29u1u6 up 192.168.1.100/24
 
-    # Create a network namespace for the HiLink 
-    sudo ip netns add sms
-    # Add the hilink to the network namespace and bring it online
-    sudo ip link dev enp0s29u1u6
-    sudo ip netns exec sms ifconfig enp0s29u1u6 up 192.168.1.100/24
+# Run the hilink commands inside the network namespace 
+sudo ip netns exec sms ./hilink_status
 
-    # Run the hilink commands inside the network namespace 
-    sudo ip netns exec sms ./hilink_status
+```
 
+## Reverse Proxy in Nginx
+```
+location / {
+    auth_basic "Restricted";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+    proxy_pass http://192.168.1.1;
+    proxy_set_header Host hi.link;
+    add_header Host hi.link;
+}
+```
