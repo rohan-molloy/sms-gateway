@@ -1,9 +1,9 @@
 #! /bin/bash
-[[ ! -f ~/.config/hilink.conf ]] && base64 -d > ~/.config/hilink.conf <<< "CkhJTElOS19QUk9UT0NPTD1odHRwCkhJTElOS19IT1NUPTE5Mi4xNjguMS4xCkhJTElOS19QT1JU
-PTgwCkhJTElOS19VU0VSPXVzZXIKSElMSU5LX1BBU1NXT1JEPXBhc3N3b3JkCg=="
+[[ ! -f ~/.config/hilink.conf ]] && printf "HILINK_PROTO=http\nHILINK_HOST=192.168.1.1\nHILINK_PORT=80\nHILINK_USER=user\nHILINK_PASSWORD=password\n" >~/.config/hilink.conf
+
 source ~/.config/hilink.conf
 
-SesTokInfo=$(curl \
+SesTokInfo=$(curl -s \
 --url     "$HILINK_PROTO://$HILINK_HOST:$HILINK_PORT/api/webserver/SesTokInfo" \
 --header  "Host:$HILINK_HOST" \
 --user    "$HILINK_USER:$HILINK_PASSWORD" 
